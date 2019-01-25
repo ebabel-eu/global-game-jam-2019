@@ -4,7 +4,11 @@
   "description": "Global Game Jam 2019 game",
   "main": "src/index.js",
   "scripts": {
-    "test": "npm run eslint && jest --coverage"
+    "test": "npm run eslint && jest --coverage",
+    "eslint": "node ./node_modules/.bin/eslint ./src/*.js ./src/**/*.js ./test/**/*.test.js",
+    "build": "node ./node_modules/.bin/webpack -p --devtool source-map",
+    "watch": "node ./node_modules/.bin/webpack --devtool source-map --watch --progress",
+    "start": "npm run build && node ./node_modules/.bin/http-server ."
   },
   "repository": {
     "type": "git",
