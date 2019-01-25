@@ -13,6 +13,7 @@ class BootGame extends Phaser.Scene {
   preload() {
     // Graphics.
     this.load.image('perspective', 'assets/perspective.png');
+    this.load.spritesheet('stamps', 'assets/stamps.png', { frameWidth: 160, frameHeight: 100 });
 
     // Audio.
     // todo: preload audio files.
