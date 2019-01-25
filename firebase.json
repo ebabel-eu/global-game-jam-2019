@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "/",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "*.md",
+      "**/node_modules/**",
+      "assets/inkscape/**",
+      "assets/screenshots/**",
+      "coverage/**",
+      "src/**",
+      "test/**",
+      "releases/**"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "node": false,
+    "es6": true
+  },
+  "globals": {
+    "module": true,
+    "Phaser": true,
+    "arguments": true,
+    "require": true,
+    "beforeEach": true,
+    "test": true,
+    "expect": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "semi": [2, "always"]
+  }
+}
