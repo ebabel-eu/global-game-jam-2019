@@ -85,13 +85,18 @@ class PlayGame extends Phaser.Scene {
       gameObject.y = dragY;
     });
 
-    if (C.debug) {
-        /* eslint no-console: 0 no-unused-vars: 0 */
-        this.input.on(
-          'dragend',
-          (pointer, gameObject, dropped) => console.log(gameObject.x, gameObject.y)
-        );
-    }
+    
+    this.input.on('dragend', (pointer, gameObject, dropped) => {
+      if (C.debug) {
+        console.log(gameObject.x, gameObject.y, gameObject.texture.key); /* eslint no-console: 0 no-unused-vars: 0 */
+      }
+
+      if (gameObject.x > 650 && gameObject.y > 400
+          && ['bomb', 'heart', 'land-mine', 'sword', 'tommy-gun'].includes(gameObject.texture.key)) {
+        gameObject.visible = false;
+      }
+
+    });
   }
 
   onTap(pointer) {

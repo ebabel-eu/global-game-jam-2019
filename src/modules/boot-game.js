@@ -26,6 +26,7 @@ class BootGame extends Phaser.Scene {
         'desk', 'light-bulb', 'lamp-shade',
         'painting-of-pilgrims', 'painting-of-gorge',
         'plant-pot', 'plant', 'piranha-plant',
+        'trashcan',
       ],
       rooms: [
         {
@@ -34,19 +35,22 @@ class BootGame extends Phaser.Scene {
           items: [
             {id: 'carpet', x: 402, y: 448},
 
-            {id: 'painting-of-gorge', x: 83, y: 191, drag, secret},
-
-            {id: 'plant-pot', x: 677, y: 398},
-            {id: 'plant', x: 683, y: 310, drag, secret},
-
-            {id: 'desk', x: 92, y: 407, drag},
-            {id: 'light-bulb', x: 103, y: 304, drag, switched},
-            {id: 'lamp-shade', x: 100, y: 271, drag},
+            {id: 'trashcan', x: 711, y: 488},
 
             {id: 'couch', x: 416, y: 379},
             {id: 'couch-pillow', x: 417, y: 393},
             {id: 'pillow', x: 364, y: 307, drag, secret},
             {id: 'pillow-2', x: 473, y: 317, drag, secret},
+
+            {id: 'plant-pot', x: 672, y: 335},
+
+            {id: 'painting-of-gorge', x: 83, y: 191, drag, secret},
+
+            {id: 'plant', x: 678, y: 249, drag, secret},
+
+            {id: 'desk', x: 92, y: 407, drag},
+            {id: 'light-bulb', x: 103, y: 304, drag, switched},
+            {id: 'lamp-shade', x: 100, y: 271, drag},
           ],
         },
       ],
