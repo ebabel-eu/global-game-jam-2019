@@ -10,5 +10,5 @@ module.exports = {
   // World bounds can be greater than canvas gameWidth and gameHeight,
   // so the camera can move to new areas beyond the initial screen area.
   worldBoundsWidth: 800,
-  worldBoundsHeight: 1200,
+  worldBoundsHeight: 600,
 };
