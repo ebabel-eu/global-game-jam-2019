@@ -13,6 +13,10 @@ class PlayGame extends Phaser.Scene {
 
     this.EG = {
       lastTap: null,
+
+      // Pick a random number of safe and dangerous items to hide in the room.
+      safeItems: Phaser.Math.Between(1, 2),
+      dangerousItems: Phaser.Math.Between(1, 2),
     };
   }
 
@@ -36,17 +40,17 @@ class PlayGame extends Phaser.Scene {
   }
 
   addStamp(x, y) {
+    // Determine distance from center of the scene.
     const _distance = distance(x, y, C.gameWidth / 2, C.gameHeight / 2);
-
     let scale = _distance / 400;
-
-    scale = (scale < 0.3) ? 0.3 : scale;
 
     // todo: handle exceptions based on object laid in the scene.
 
     // todo: define the back wall of the room as an "object"
+    scale = (scale < 0.3) ? 0.3 : scale;
 
-    this.add.image(x, y, 'stamps', 1).setScale(scale);
+    // todo: show the correct frame of the spritesheet based on location in the room.
+    this.add.tileSprite(x, y, 100, 100, 'stamps').setScale(scale);
   }
 
   // Game loop function that gets called continuously unless a game over.

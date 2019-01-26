@@ -36,3 +36,7 @@ By default, debug mode is off. To switch it on, run in Javascript console of you
 ```
 localStorage['debug'] = true;
 ```
+
+## Shared assets
+
+https://drive.google.com/drive/folders/1_4c_L--_dbe9DUkPZQk9u6bk12nrYvul

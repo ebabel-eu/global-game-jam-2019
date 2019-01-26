@@ -32,7 +32,7 @@ class BootGame extends Phaser.Scene {
   preload() {
     // Graphics.
     this.load.image('background', 'assets/background.png');
-    this.load.spritesheet('stamps', 'assets/stamps.svg', { frameWidth: 160, frameHeight: 100 });
+    this.load.spritesheet('stamps', 'assets/stamps.png', { frameWidth: 500, frameHeight: 100 });
 
     // Load all art graphics.
     window.EG.art.map(n => this.load.image(n.id, `assets/${n.id}.png`));
