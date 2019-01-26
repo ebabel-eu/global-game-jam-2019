@@ -15,11 +15,7 @@ window.addEventListener('load', () => {
     height: C.gameHeight,
     backgroundColor: 0xffffff,
     physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: { y: C.gravity },
-        debug: C.debug,
-      },
+      default: 'matter',
     },
     scene: [
       BootGame,
