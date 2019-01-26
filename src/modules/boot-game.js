@@ -16,14 +16,39 @@ class BootGame extends Phaser.Scene {
         {id: 'lamp-shade', x: 400, y: 300},
         {id: 'painting-base', x: 500, y: 100},
         {id: 'painting', x: 600, y: 0},
+        {id: 'plant-base', x: 700, y: 350},
         {id: 'pillow-1', x: 700, y: 350},
         {id: 'pillow-2', x: 0, y: 200},
         {id: 'pillow-couch-1', x: 100, y: 150},
         {id: 'pillow-couch-2', x: 200, y: 250},
         {id: 'plant-1', x: 300, y: 450},
         {id: 'plant-2', x: 400, y: 550},
-        {id: 'plant-base', x: 500, y: 250},
-        {id: 'table-base', x: 600, y: 350},
+        {id: 'table-base', x: 600, y: 500},
+      ],
+      rooms: [
+        {
+          description: 'first room',
+          items: [
+            {id: 'couch-base', x: 401, y: 423},
+            {id: 'pillow-couch-1', x: 372, y: 439},
+            {id: 'pillow-couch-2', x: 434, y: 440},
+            {id: 'pillow-1', x: 372, y: 401},
+            {id: 'pillow-2', x: 433, y: 401},
+
+            {id: 'carpet', x: 402, y: 448},
+
+            {id: 'painting-base', x: 74, y: 178},
+            {id: 'painting', x: 80, y: 181},
+
+            {id: 'plant-base', x: 700, y: 461},
+            {id: 'plant-1', x: 706, y: 416},
+
+            {id: 'table-base', x: 92, y: 407},
+            {id: 'lamp-base-1', x: 112, y: 406},
+            {id: 'lamp-shade', x: 114, y: 380},
+
+          ],
+        },
       ],
     };
   }

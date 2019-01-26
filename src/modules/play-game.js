@@ -25,14 +25,19 @@ class PlayGame extends Phaser.Scene {
 
     this.input.on('pointerdown', this.onTap, this);
 
-
-    window.EG.art.map(s => {
+    // First room.
+    window.EG.rooms[0].items.map(s => {
       const sprite = this.add.sprite(s.x, s.y, s.id).setInteractive();
       this.input.setDraggable(sprite);
-      this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
-        gameObject.x = dragX;
-        gameObject.y = dragY;
-      });
+    });
+
+    this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+      gameObject.x = dragX;
+      gameObject.y = dragY;
+    });
+
+    this.input.on('dragend', (pointer, gameObject, dropped) => {
+      console.log(gameObject.x, gameObject.y);
     });
   }
 
