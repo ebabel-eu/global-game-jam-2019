@@ -4,7 +4,14 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "*.md",
+      "assets/archive/**",
+      "assets/art-originals",
+      "assets/sounds/asd/**",
+      "assets/sounds/wav/**",
+      "docs/**",
+      "src/**"
     ],
     "rewrites": [
       {
