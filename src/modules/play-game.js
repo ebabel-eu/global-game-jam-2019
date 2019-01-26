@@ -25,12 +25,8 @@ class PlayGame extends Phaser.Scene {
   }
 
   onTap(pointer) {
-    let isDoubleTap = false;
-
-    if (this.EG.lastTap && this.EG.lastTap.x === pointer.x && this.EG.lastTap.y === pointer.y
-        && (Date.now() - this.EG.lastTap.tapTime) < 250) {
-      isDoubleTap = true;
-    }
+    const isDoubleTap = (this.EG.lastTap && this.EG.lastTap.x === pointer.x && this.EG.lastTap.y === pointer.y
+      && (Date.now() - this.EG.lastTap.tapTime) < 250);
 
     if (isDoubleTap) {
       this.addStamp(pointer.x, pointer.y);
