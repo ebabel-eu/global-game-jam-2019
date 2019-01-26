@@ -4,14 +4,13 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "*.md",
-      "**/node_modules/**",
-      "assets/inkscape/**",
-      "assets/screenshots/**",
-      "coverage/**",
-      "src/**",
-      "test/**",
-      "releases/**"
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
     ]
   }
 }
