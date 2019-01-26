@@ -26,13 +26,14 @@ class PlayGame extends Phaser.Scene {
     this.input.on('pointerdown', this.onTap, this);
 
 
-    // window.EG.art.map(a => this.add.image(a.x, a.y, a.id));
-
-    this.matter.world.setBounds();
-    window.EG.art.map(n => {
-      this.matter.add.image(n.x, n.y, n.id, null, { chamfer: 16 }).setBounce(0.9);
+    window.EG.art.map(s => {
+      const sprite = this.add.sprite(s.x, s.y, s.id).setInteractive();
+      this.input.setDraggable(sprite);
+      this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
+        gameObject.x = dragX;
+        gameObject.y = dragY;
+      });
     });
-    this.matter.add.mouseSpring({ length: 1, stiffness: 0.6 });
   }
 
   onTap(pointer) {

@@ -14,9 +14,6 @@ window.addEventListener('load', () => {
     width: C.gameWidth,
     height: C.gameHeight,
     backgroundColor: 0xffffff,
-    physics: {
-      default: 'matter',
-    },
     scene: [
       BootGame,
       PlayGame,
