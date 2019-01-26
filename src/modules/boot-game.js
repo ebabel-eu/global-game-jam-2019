@@ -35,7 +35,7 @@ class BootGame extends Phaser.Scene {
     this.load.spritesheet('stamps', 'assets/stamps.svg', { frameWidth: 160, frameHeight: 100 });
 
     // Load all art graphics.
-    window.EG.art.map(n => this.load.image(n.id, `assets/art-originals/${n.id}.png`));
+    window.EG.art.map(n => this.load.image(n.id, `assets/${n.id}.png`));
 
     // Audio.
     // todo: preload audio files.

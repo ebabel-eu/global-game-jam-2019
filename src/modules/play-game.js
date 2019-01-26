@@ -21,7 +21,7 @@ class PlayGame extends Phaser.Scene {
 
     this.input.on('pointerdown', this.onTap, this);
 
-    window.EG.art.map(a => this.add.image(a.x, a.y, a.id).setScale(0.1));
+    window.EG.art.map(a => this.add.image(a.x, a.y, a.id));
   }
 
   onTap(pointer) {
