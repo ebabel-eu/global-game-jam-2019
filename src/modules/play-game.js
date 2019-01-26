@@ -15,20 +15,24 @@ class PlayGame extends Phaser.Scene {
       lastTap: null,
 
       // Pick a random number of safe and dangerous items to hide in the room.
-      safeItems: Phaser.Math.Between(1, 2),
-      dangerousItems: Phaser.Math.Between(1, 2),
+      safeItems: Phaser.Math.Between(1, 3),
+      dangerousItems: Phaser.Math.Between(1, 5),
     };
   }
 
   create() {
-    this.add.image(C.gameWidth / 2, C.gameHeight / 2, 'background').setScrollFactor(0);
+    this.add.image(C.gameWidth / 2, C.gameHeight / 2, 'background-room-1').setScrollFactor(0);
 
     this.input.on('pointerdown', this.onTap, this);
 
     // First room.
     window.EG.rooms[0].items.map(s => {
-      const sprite = this.add.sprite(s.x, s.y, s.id).setInteractive();
-      this.input.setDraggable(sprite);
+      const sprite = this.add.sprite(s.x, s.y, s.id)
+      
+      if (s.drag) {
+        sprite.setInteractive();
+        this.input.setDraggable(sprite);
+      }
     });
 
     this.input.on('drag', (pointer, gameObject, dragX, dragY) => {
@@ -36,9 +40,13 @@ class PlayGame extends Phaser.Scene {
       gameObject.y = dragY;
     });
 
-    this.input.on('dragend', (pointer, gameObject, dropped) => {
-      console.log(gameObject.x, gameObject.y);
-    });
+    if (C.debug) {
+        /* eslint no-console: 0 no-unused-vars: 0 */
+        this.input.on(
+          'dragend',
+          (pointer, gameObject, dropped) => console.log(gameObject.x, gameObject.y)
+        );
+    }
   }
 
   onTap(pointer) {

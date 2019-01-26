@@ -13,10 +13,7 @@ window.addEventListener('load', () => {
     type: Phaser.AUTO,
     width: C.gameWidth,
     height: C.gameHeight,
-    backgroundColor: 0xffffff,
-    physics: {
-      default: 'matter'
-    },
+    backgroundColor: 0x000000,
     scene: [
       BootGame,
       PlayGame,
