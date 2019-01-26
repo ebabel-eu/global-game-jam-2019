@@ -52,14 +52,6 @@ class PlayGame extends Phaser.Scene {
     return null;
   }
 
-  onObjectClicked(pointer, gameObject) {
-    if (!window.isDoubleTap) {
-      return;
-    }
-
-    console.log(gameObject.texture.key);
-  }
-
   create() {
     this.add.image(C.gameWidth / 2, C.gameHeight / 2, 'background-room-1').setScrollFactor(0);
 
@@ -73,7 +65,7 @@ class PlayGame extends Phaser.Scene {
       if (s.secret && secret) {
         const secretItem = this.add.sprite(s.x, s.y, secret);
         secretItem.setInteractive();
-        this.input.on('gameobjectdown', this.onObjectClicked);
+        this.input.setDraggable(secretItem);
       }
 
       // Add the main item to the scene, unless this item can be switched.
@@ -105,8 +97,6 @@ class PlayGame extends Phaser.Scene {
   onTap(pointer) {
     const isDoubleTap = (this.EG.lastTap && this.EG.lastTap.x === pointer.x && this.EG.lastTap.y === pointer.y
       && (Date.now() - this.EG.lastTap.tapTime) < 250);
-
-    window.isDoubleTap = isDoubleTap;
 
     if (isDoubleTap) {
       this.addStamp(pointer.x, pointer.y);

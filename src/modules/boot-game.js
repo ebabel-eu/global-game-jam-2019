@@ -40,7 +40,7 @@ class BootGame extends Phaser.Scene {
             {id: 'plant', x: 683, y: 310, drag, secret},
 
             {id: 'desk', x: 92, y: 407, drag},
-            {id: 'light-bulb', x: 103, y: 304, switched},
+            {id: 'light-bulb', x: 103, y: 304, drag, switched},
             {id: 'lamp-shade', x: 100, y: 271, drag},
 
             {id: 'couch', x: 416, y: 379},
