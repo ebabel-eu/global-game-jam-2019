@@ -8,7 +8,14 @@ class BootGame extends Phaser.Scene {
   constructor() {
     super('BootGame');
 
+    // Add drag to an item to make it draggable.
     const drag = true;
+
+    // Add secret to an item to let it hide other items (safe or dangerous).
+    const secret = true;
+
+    // Some items, like the light bulb, can be switched with a secret item instead.
+    const switched = true;
 
     window.EG = {
       art: [
@@ -17,29 +24,29 @@ class BootGame extends Phaser.Scene {
         'chocolate-heart', 'teddy-bear', 'turtle',
         'couch', 'couch-pillow', 'pillow', 'pillow-2',
         'desk', 'light-bulb', 'lamp-shade',
-        'painting-base', 'painting', 'gorge-painting',
+        'painting-of-pilgrims', 'painting-of-gorge',
         'plant-pot', 'plant', 'piranha-plant',
       ],
       rooms: [
         {
           description: 'first room',
+
           items: [
             {id: 'carpet', x: 402, y: 448},
 
-            {id: 'painting-base', x: 74, y: 178, drag},
-            {id: 'gorge-painting', x: 83, y: 191, drag},
+            {id: 'painting-of-gorge', x: 83, y: 191, drag, secret},
 
             {id: 'plant-pot', x: 677, y: 398},
-            {id: 'plant', x: 683, y: 310, drag},
+            {id: 'plant', x: 683, y: 310, drag, secret},
 
             {id: 'desk', x: 92, y: 407, drag},
-            {id: 'light-bulb', x: 103, y: 304, drag},
+            {id: 'light-bulb', x: 103, y: 304, switched},
             {id: 'lamp-shade', x: 100, y: 271, drag},
 
             {id: 'couch', x: 416, y: 379},
             {id: 'couch-pillow', x: 417, y: 393},
-            {id: 'pillow', x: 364, y: 307, drag},
-            {id: 'pillow-2', x: 473, y: 317, drag},
+            {id: 'pillow', x: 364, y: 307, drag, secret},
+            {id: 'pillow-2', x: 473, y: 317, drag, secret},
           ],
         },
       ],
