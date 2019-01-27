@@ -35,11 +35,6 @@
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
 
-    h1 {
-      font-size: 2em;
-      margin: 0 0 .5em;
-    }
-
     p {
       margin: 0 0 .5em;
     }
@@ -51,31 +46,76 @@
       z-index: 1;
     }
 
-    #play-button {
-      margin: 1em auto;
-      color: white;
-      background-color: black;
-      border-color: grey;
+    @-webkit-keyframes rotating /* Safari and Chrome */ {
+      from {
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes rotating {
+      from {
+        -ms-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      to {
+        -ms-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    .rotating {
+      -webkit-animation: rotating 2s linear infinite;
+      -moz-animation: rotating 2s linear infinite;
+      -ms-animation: rotating 2s linear infinite;
+      -o-animation: rotating 2s linear infinite;
+      animation: rotating 2s linear infinite;
     }
 
-    #play-button:hover {
-      color: black;
-      background-color: white;
+    #loading-animation {
+      display: block;
+      position: relative;
+      width: 300px;
+      margin: 20px auto;
+      height: 288px;
+    }
+
+    #circle-of-loading {
+      position: absolute;
+      left: 16px;
+      top: 6px;
+    }
+
+    #gorge-the-loader {
+      position: absolute;
+      left: 120px;
+      top: 101px;
+    }
+
+    #home-button {
+      margin: 1em auto;
     }
 
     .button {
-      font-size: 2em;
-      font-weight: 600;
       cursor: pointer;
-      border-radius: .5em;
-      padding: 0.1em .75em;
+      padding: 0;
+      border: none;
+      background-color: transparent;
     }
 
-    #play-button:disabled {
+    #home-button:disabled {
       cursor: default;
-      color: #666;
-      background-color: #ccc;
-      border-color: #999;
+      opacity: .5;
     }
 
     @media (max-width: 768px) {
@@ -112,9 +152,15 @@
 </head>
 <body>
   <div id="loading">
-    <h1>Global Game Jam 2019</h1>
-    <p><button id="play-button" class="button" disabled="disabled">Play</button></p>  
-    <p id="loading-animation">Game loading, please wait...</p>
+    <p>
+      <button id="home-button" class="button" disabled="disabled">
+        <img src="assets/home-button.png">
+      </button>
+    </p>
+    <div id="loading-animation">
+      <img src="assets/loading.png" width="263" height="274" id="circle-of-loading" class="rotating">
+      <img src="assets/loading-gorge.png" width="59" height="82" id="gorge-the-loader">
+    </div>
   </div>
 
   <noscript>

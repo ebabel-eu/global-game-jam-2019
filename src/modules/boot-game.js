@@ -66,6 +66,12 @@ class BootGame extends Phaser.Scene {
     this.load.image('background-room-1', 'assets/background-room-1.png');
     this.load.spritesheet('stamps', 'assets/stamps.png', { frameWidth: 500, frameHeight: 100 });
 
+    // Home graphics preloading.
+    this.load.image('home-background', 'assets/home-background.jpg');
+    this.load.image('home-foreground', 'assets/home-foreground.png');
+    this.load.image('play-button', 'assets/play-button.png');
+    this.load.image('tutorial-button', 'assets/tutorial-button.png');
+
     // Load all art graphics.
     window.EG.art.map(a => this.load.image(a, `assets/${a}.png`));
 
@@ -75,7 +81,7 @@ class BootGame extends Phaser.Scene {
 
   // Phaser function, here used to activate the play button once the preload has completed its work.
   create() {
-    document.getElementById('play-button').addEventListener('click', (e) => {
+    document.getElementById('home-button').addEventListener('click', (e) => {
       e.preventDefault();
 
       // Hide the loading screen when the player clicks on the enabled Play button.
@@ -84,11 +90,11 @@ class BootGame extends Phaser.Scene {
       // Display the canvas.
       document.querySelector('body > canvas').style.display = 'block';
 
-      this.scene.start('PlayGame');
+      this.scene.start('Home');
     });
 
     // Game has finished loading all assets, so it's possible to start playing.
-    document.getElementById('play-button').disabled = false;
+    document.getElementById('home-button').disabled = false;
     document.getElementById('loading-animation').style.display = 'none';
   }
 }
