@@ -7,17 +7,30 @@
 class LoseGame extends Phaser.Scene {
   constructor() {
     super('LoseGame');
+
+    this.EG = {
+      music: null,
+      bombSoundEffect: null,
+    };
   }
 
   goHome() {
+    this.sound.stopAll();
     this.scene.start('Home');
   }
 
   reset() {
+    this.sound.stopAll();
     this.scene.start('PlayGame');
   }
 
   create() {
+    this.EG.bombSoundEffect = this.sound.add('music-bomb');
+    this.EG.music = this.sound.add('music-lose');
+
+    this.EG.bombSoundEffect.play();
+    this.EG.music.play();    
+
     localStorage['reset'] = true;
 
     this.add.image(400, 300, 'lose-screen').setScrollFactor(0);

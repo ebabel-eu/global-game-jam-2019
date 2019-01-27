@@ -7,17 +7,26 @@
 class WinGame extends Phaser.Scene {
   constructor() {
     super('WinGame');
+
+    this.EG = {
+      music: null,
+    };
   }
 
   goHome() {
+    this.sound.stopAll();
     this.scene.start('Home');
   }
 
   reset() {
+    this.sound.stopAll();
     this.scene.start('PlayGame');
   }
 
   create() {
+    this.EG.music = this.sound.add('music-win');
+    this.EG.music.play();
+
     localStorage['reset'] = true;
 
     this.add.image(400, 300, 'win-screen').setScrollFactor(0);
