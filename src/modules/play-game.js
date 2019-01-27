@@ -13,43 +13,10 @@ class PlayGame extends Phaser.Scene {
     this.EG = {
       lastTap: null,
 
-      // Pick a random number of safe and dangerous items to hide in the room.
-      maxGoodItems: Phaser.Math.Between(1, 3),
+      // Pick a random number of dangerous items to throw away in the trashcan.
       maxBadItems: Phaser.Math.Between(1, 5),
-
-      goodItems: [],
       badItems: [],
     };
-  }
-
-  // Return a randomly selected good or bad hidden item.
-  getGoodOrBadSecret() {
-    let goodPossible = (this.EG.goodItems.length < this.EG.maxGoodItems);
-    let badPossible = (this.EG.badItems.length < this.EG.maxBadItems);
-
-    // Neither good nor bad are possible.
-    if (!goodPossible && !badPossible) {
-      return null;
-    }
-
-    const good = ['chocolate-heart', 'teddy-bear', 'turtle'];
-    const bad = ['bomb', 'heart', 'land-mine', 'sword', 'tommy-gun'];
-
-    // Only good is possible.
-    if (goodPossible) {
-      const goodChoice = good[Phaser.Math.Between(0, good.length - 1)];
-      this.EG.goodItems.push(goodChoice);
-      return goodChoice;
-    }
-
-    //  Only bad is possible.
-    if (badPossible) {
-      const badChoice = bad[Phaser.Math.Between(0, bad.length - 1)];
-      this.EG.badItems.push(badChoice);
-      return badChoice;
-    }
-
-    return null;
   }
 
   create() {
@@ -57,13 +24,16 @@ class PlayGame extends Phaser.Scene {
 
     this.input.on('pointerdown', this.onTap, this);
 
+    const bad = ['bomb', 'heart', 'land-mine', 'sword', 'tommy-gun'];
+
     // Furnish the first room.
     window.EG.rooms[0].items.map(s => {
-      const secret = this.getGoodOrBadSecret();
+      const secret = bad[Phaser.Math.Between(0, bad.length - 1)];
 
       // If the sprite can hide a secret item, place that secret item first.
-      if (s.secret && secret) {
+      if (s.secret && secret && this.EG.badItems.length <= this.EG.maxBadItems) {
         const secretItem = this.add.sprite(s.x, s.y, secret);
+        this.EG.badItems.push(secret);
         secretItem.setInteractive();
         this.input.setDraggable(secretItem);
       }
