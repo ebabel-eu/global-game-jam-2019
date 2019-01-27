@@ -22,6 +22,9 @@ class PlayGame extends Phaser.Scene {
 
   preload() {
     this.load.image('win-screen', 'assets/win-screen.jpg');
+    this.load.image('goodend-menu', 'assets/goodend-menu.png');
+    this.load.image('home-button', 'assets/home-button.png');
+    this.load.image('reset-button', 'assets/reset-button.png');
   }
 
   create() {

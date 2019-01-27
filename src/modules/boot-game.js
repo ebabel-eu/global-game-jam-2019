@@ -27,7 +27,6 @@ class BootGame extends Phaser.Scene {
         'painting-of-pilgrims', 'painting-of-gorge',
         'plant-pot', 'plant', 'piranha-plant',
         'trashcan',
-        'goodend-menu', 'home-button', 'reset-button',
       ],
       rooms: [
         {
@@ -52,6 +51,9 @@ class BootGame extends Phaser.Scene {
             {id: 'desk', x: 92, y: 407, drag},
             {id: 'light-bulb', x: 103, y: 304, drag, switched},
             {id: 'lamp-shade', x: 100, y: 271, drag},
+
+            {id: 'turtle', x: 8, y: 460, drag},
+            {id: 'teddy-bear', x: 536, y: 450, drag},
           ],
         },
       ],
