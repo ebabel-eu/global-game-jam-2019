@@ -27,6 +27,10 @@ class PlayGame extends Phaser.Scene {
     this.load.image('reset-button', 'assets/reset-button.png');
   }
 
+  timeIsUp() {
+    this.scene.start('LoseGame');
+  }
+
   create() {
     if (localStorage['reset']) {
       this.EG.lastTap = null;
@@ -35,6 +39,12 @@ class PlayGame extends Phaser.Scene {
       this.EG.trashedBadItems = [];
       localStorage.removeItem('reset');
     }
+
+    const timer = this.time.addEvent({
+      delay: 10000,
+      callback: this.timeIsUp,
+      callbackScope: this,
+    });
 
     this.add.image(C.gameWidth / 2, C.gameHeight / 2, 'background-room-1').setScrollFactor(0);
 
