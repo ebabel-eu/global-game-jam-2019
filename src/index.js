@@ -8,6 +8,7 @@ import PlayGame from './modules/play-game';
 import WinGame from './modules/win-game';
 import LoseGame from './modules/lose-game';
 import Home from './modules/home';
+import Tutorial from './modules/tutorial';
 
 // The whole game is enclosed in an anonymous function that runs once all code is loaded.
 window.addEventListener('load', () => {
@@ -23,6 +24,7 @@ window.addEventListener('load', () => {
       WinGame,
       LoseGame,
       Home,
+      Tutorial,
     ],
   };
 

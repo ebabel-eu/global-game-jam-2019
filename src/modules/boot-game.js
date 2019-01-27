@@ -72,6 +72,9 @@ class BootGame extends Phaser.Scene {
     this.load.image('play-button', 'assets/play-button.png');
     this.load.image('tutorial-button', 'assets/tutorial-button.png');
 
+    // Tutorial graphics preloading.
+    this.load.image('tutorial-background', 'assets/tutorial-background.png');
+
     // Load all art graphics.
     window.EG.art.map(a => this.load.image(a, `assets/${a}.png`));
 
