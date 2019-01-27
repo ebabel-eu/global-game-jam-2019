@@ -27,6 +27,7 @@ class BootGame extends Phaser.Scene {
         'painting-of-pilgrims', 'painting-of-gorge',
         'plant-pot', 'plant', 'piranha-plant',
         'trashcan',
+        'goodend-menu', 'home-button', 'reset-button',
       ],
       rooms: [
         {

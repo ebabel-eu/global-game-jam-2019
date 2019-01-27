@@ -20,7 +20,19 @@ class PlayGame extends Phaser.Scene {
     };
   }
 
+  preload() {
+    this.load.image('win-screen', 'assets/win-screen.jpg');
+  }
+
   create() {
+    if (localStorage['reset']) {
+      this.EG.lastTap = null;
+      this.EG.maxBadItems = Phaser.Math.Between(1, 5);
+      this.EG.badItems = [];
+      this.EG.trashedBadItems = [];
+      localStorage.removeItem('reset');
+    }
+
     this.add.image(C.gameWidth / 2, C.gameHeight / 2, 'background-room-1').setScrollFactor(0);
 
     this.input.on('pointerdown', this.onTap, this);
