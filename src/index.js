@@ -5,6 +5,7 @@ import resizeGame from './utils/resize-game';
 import debounce from './utils/debounce';
 import BootGame from './modules/boot-game';
 import PlayGame from './modules/play-game';
+import WinGame from './modules/win-game';
 
 // The whole game is enclosed in an anonymous function that runs once all code is loaded.
 window.addEventListener('load', () => {
@@ -17,6 +18,7 @@ window.addEventListener('load', () => {
     scene: [
       BootGame,
       PlayGame,
+      WinGame,
     ],
   };
 

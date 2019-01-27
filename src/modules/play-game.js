@@ -16,6 +16,7 @@ class PlayGame extends Phaser.Scene {
       // Pick a random number of dangerous items to throw away in the trashcan.
       maxBadItems: Phaser.Math.Between(1, 5),
       badItems: [],
+      trashedBadItems: [],
     };
   }
 
@@ -39,9 +40,13 @@ class PlayGame extends Phaser.Scene {
       }
 
       // Add the main item to the scene, unless this item can be switched.
-      const sprite = (s.switched && secret) ?
-        this.add.sprite(s.x, s.y, secret)
-        : this.add.sprite(s.x, s.y, s.id);
+      let sprite;
+      if (s.switched && secret) {
+        sprite = this.add.sprite(s.x, s.y, secret);
+        this.EG.badItems.push(secret);
+      } else {
+        sprite = this.add.sprite(s.x, s.y, s.id);
+      }
       
       // Make the item draggable if the current rooms says it is.
       if (s.drag) {
@@ -64,6 +69,12 @@ class PlayGame extends Phaser.Scene {
       if (gameObject.x > 650 && gameObject.y > 400
           && ['bomb', 'heart', 'land-mine', 'sword', 'tommy-gun'].includes(gameObject.texture.key)) {
         gameObject.visible = false;
+
+        this.EG.trashedBadItems.push(gameObject.texture.key);
+
+        if (this.EG.trashedBadItems.length === this.EG.badItems.length) {
+          this.scene.start('WinGame');
+        }
       }
 
     });
