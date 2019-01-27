@@ -9,7 +9,9 @@ class Tutorial extends Phaser.Scene {
     super('Tutorial');
   }
 
+
   playGame() {
+    this.sound.stopAll();
     this.scene.start('PlayGame');
   }
 

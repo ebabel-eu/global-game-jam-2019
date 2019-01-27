@@ -17,6 +17,8 @@ class PlayGame extends Phaser.Scene {
       maxBadItems: Phaser.Math.Between(1, 5),
       badItems: [],
       trashedBadItems: [],
+
+      music: null,
     };
   }
 
@@ -30,10 +32,18 @@ class PlayGame extends Phaser.Scene {
   }
 
   timeIsUp() {
+    this.stopMusic();
     this.scene.start('LoseGame');
   }
 
+  stopMusic() {
+    this.EG.music.stop();
+  }
+
   create() {
+    this.EG.music = this.sound.add('music-play');
+    this.EG.music.play();
+
     if (localStorage['reset']) {
       this.EG.lastTap = null;
       this.EG.maxBadItems = Phaser.Math.Between(1, 5);
@@ -100,6 +110,7 @@ class PlayGame extends Phaser.Scene {
         this.EG.trashedBadItems.push(gameObject.texture.key);
 
         if (this.EG.trashedBadItems.length === this.EG.badItems.length) {
+          this.stopMusic();
           this.scene.start('WinGame');
         }
       }

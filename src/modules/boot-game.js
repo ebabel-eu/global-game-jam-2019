@@ -79,7 +79,8 @@ class BootGame extends Phaser.Scene {
     window.EG.art.map(a => this.load.image(a, `assets/${a}.png`));
 
     // Audio.
-    // todo: preload audio files.
+    this.load.audio('music-home', ['assets/music/home.mp3', 'assets/music/home.ogg']);
+    this.load.audio('music-play', ['assets/music/play.mp3', 'assets/music/play.ogg']);
   }
 
   // Phaser function, here used to activate the play button once the preload has completed its work.

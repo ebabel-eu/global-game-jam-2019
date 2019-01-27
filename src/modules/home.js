@@ -7,9 +7,18 @@
 class Home extends Phaser.Scene {
   constructor() {
     super('Home');
+
+    this.EG = {
+      music: null,
+    };
+  }
+
+  stopMusic() {
+    this.EG.music.stop();
   }
 
   playGame() {
+    this.stopMusic();
     this.scene.start('PlayGame');
   }
 
@@ -18,6 +27,11 @@ class Home extends Phaser.Scene {
   }
 
   create() {
+    this.EG.music = this.sound.add('music-home', {
+      loop: true,
+    });
+    this.EG.music.play();
+
     this.add.image(400, 300, 'home-background').setScrollFactor(0);
 
     const play = this.add.sprite(400, 240, 'play-button').setScale(0.8);
