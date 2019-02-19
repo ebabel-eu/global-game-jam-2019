@@ -11,4 +11,7 @@ module.exports = {
   // so the camera can move to new areas beyond the initial screen area.
   worldBoundsWidth: 800,
   worldBoundsHeight: 600,
+
+  // In milliseconds, how long does the player have to solve the room puzzle.
+  maxTime: 20000,
 };

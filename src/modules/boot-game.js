@@ -64,7 +64,6 @@ class BootGame extends Phaser.Scene {
   preload() {
     // Graphics.
     this.load.image('background-room-1', 'assets/background-room-1.png');
-    this.load.spritesheet('stamps', 'assets/stamps.png', { frameWidth: 500, frameHeight: 100 });
 
     // Home graphics preloading.
     this.load.image('home-background', 'assets/home-background.jpg');

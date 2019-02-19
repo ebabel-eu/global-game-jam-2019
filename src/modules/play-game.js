@@ -42,7 +42,9 @@ class PlayGame extends Phaser.Scene {
 
   create() {
     this.EG.music = this.sound.add('music-play');
-    this.EG.music.play();
+    this.EG.music.play({
+      loop: true,
+    });
 
     if (localStorage['reset']) {
       this.EG.lastTap = null;
@@ -53,14 +55,12 @@ class PlayGame extends Phaser.Scene {
     }
 
     const timer = this.time.addEvent({
-      delay: 10000,
+      delay: C.maxTime,
       callback: this.timeIsUp,
       callbackScope: this,
     });
 
     this.add.image(C.gameWidth / 2, C.gameHeight / 2, 'background-room-1').setScrollFactor(0);
-
-    this.input.on('pointerdown', this.onTap, this);
 
     const bad = ['bomb', 'heart', 'land-mine', 'sword', 'tommy-gun'];
 
@@ -97,7 +97,6 @@ class PlayGame extends Phaser.Scene {
       gameObject.y = dragY;
     });
 
-    
     this.input.on('dragend', (pointer, gameObject, dropped) => {
       if (C.debug) {
         console.log(gameObject.x, gameObject.y, gameObject.texture.key); /* eslint no-console: 0 no-unused-vars: 0 */
@@ -114,29 +113,8 @@ class PlayGame extends Phaser.Scene {
           this.scene.start('WinGame');
         }
       }
-
     });
   }
-
-  onTap(pointer) {
-    const isDoubleTap = (this.EG.lastTap && this.EG.lastTap.x === pointer.x && this.EG.lastTap.y === pointer.y
-      && (Date.now() - this.EG.lastTap.tapTime) < 250);
-
-    if (isDoubleTap) {
-      this.addStamp(pointer.x, pointer.y);
-    }
-
-    this.EG.lastTap = { x: pointer.x, y: pointer.y, tapTime: Date.now() };
-  }
-
-  addStamp(x, y) {
-    this.add.tileSprite(x, y, 100, 100, 'stamps');
-  }
-
-  // Game loop function that gets called continuously unless a game over.
-  update() {
-  }
-
 }
 
 export default PlayGame;

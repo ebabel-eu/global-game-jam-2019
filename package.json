@@ -1,6 +1,6 @@
 {
   "name": "global-game-jam-2019",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Global Game Jam 2019 game",
   "main": "src/index.js",
   "scripts": {
